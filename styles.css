@@ -1,0 +1,127 @@
+/* Animated Gradient Background */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #ff7eb3, #764ba2, #667eea, #48c6ef);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  color: #fff;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  text-align: center;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* Buttons */
+.btn {
+  background: #ff7eb3;
+  border: none;
+  padding: 12px 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.btn:hover {
+  background: #ff4e88;
+  transform: scale(1.1) rotate(-1deg);
+}
+
+.btn.secondary {
+  background: #48c6ef;
+}
+
+.btn.secondary:hover {
+  background: #00aaff;
+  transform: scale(1.1) rotate(1deg);
+}
+
+/* Modal Background */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+  background: #1e1e2f;
+  padding: 30px;
+  border-radius: 16px;
+  width: 60%;
+  max-width: 500px;
+  opacity: 0;
+  transform: translateY(-200px) scale(0.7);
+  animation: none;
+  color: #fff;
+  text-align: center;
+}
+
+/* Slide + Fade + Scale Animation */
+@keyframes slideFadeIn {
+  0% {
+    transform: translateY(-200px) scale(0.7);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(30px) scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Fade Out */
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(-100px) scale(0.8); }
+}
+
+/* Staggered Content Animation */
+.stagger {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 0.6s forwards;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Close Button */
+.close {
+  color: #fff;
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #ff7eb3;
+}
